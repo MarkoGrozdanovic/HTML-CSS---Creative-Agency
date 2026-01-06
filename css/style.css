@@ -1,3 +1,11 @@
+:root {
+  --text-color: #c6c6c6;
+  --green-color: #1f8053;
+  --black-color: black;
+  --white-color: white;
+  --border-color: #1c1c1c;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,13 +13,17 @@
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--black-color);
+  color: var(--text-color);
   font-family: "Hanken Grotesk", sans-serif;
 }
 
+section {
+  overflow: x;
+}
+
 a {
-  color: white;
+  color: var(--white-color);
   text-decoration: none;
 }
 
@@ -23,6 +35,13 @@ a {
 
 header {
   padding: 50px 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  animation: slide-down 1s;
 }
 
 .main-navigation {
@@ -33,9 +52,12 @@ header {
 .main-navigation nav {
   display: flex;
   gap: 40px;
-  border: 1px solid #1c1c1c;
+  border: 1px solid var(--border-color);
   padding: 15px 50px;
   border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 .main-navigation nav a {
@@ -43,19 +65,19 @@ header {
 }
 
 .main-navigation nav a:hover {
-  color: #1f8053;
+  color: var(--green-color);
 }
 
 .secondary-cta-button {
   padding: 15px 20px;
-  border: 1px solid #1c1c1c;
+  border: 1px solid var(--border-color);
   border-radius: 30px;
   transition: 0.3s;
   position: relative;
 }
 
 .secondary-cta-button:hover {
-  border-color: #1f8053;
+  border-color: var(--green-color);
 }
 .secondary-cta-button .inner-glow {
   display: flex;
@@ -100,7 +122,7 @@ header {
   display: flex;
   gap: 5px;
   align-items: center;
-  background-color: black;
+  background-color: var(--black-color);
   padding: 15px 20px;
   border-radius: 30px;
   box-shadow: 0 0 20px 0 rgba(31, 128, 83, 0.7);
@@ -128,6 +150,208 @@ header {
   transform: translate(0, 0) rotate(-45deg);
 }
 
+.hero {
+  position: relative;
+  height: 100vh;
+  padding-top: 200px;
+}
+
 a:hover .btn-arrow-wrapper img {
   animation: arrow-moving 0.3s linear;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.hero video {
+  transform: rotate(180deg);
+  width: 100%;
+}
+
+.hero .video-wrapper {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  width: 70%;
+}
+
+.hero .hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.hero-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero .hero-content h1 {
+  font-size: 9.375rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(
+    90deg,
+    rgba(150, 209, 176, 1) 0%,
+    rgba(198, 198, 198, 1) 50%,
+    rgba(150, 209, 176, 1) 100%
+  );
+  color: transparent;
+  background-clip: text;
+  animation: fade-in 1s;
+}
+
+.hero .hero-content h2 {
+  font-size: 1.875rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.hero .hero-content p {
+  font-size: 1.5rem;
+  max-width: 880px;
+  font-weight: 300;
+}
+
+.hero .video-wrapper .video-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.hero .hero-lines {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.1;
+  height: 70vh;
+}
+
+.portfolio {
+  padding: 50px 0;
+}
+
+.portfolio .portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+h2.section-heading {
+  font-size: 3.75rem;
+  font-weight: 800;
+  background: linear-gradient(
+    90deg,
+    rgba(150, 209, 176, 1) 0%,
+    rgba(198, 198, 198, 1) 50%,
+    rgba(150, 209, 176, 1) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.portfolio .portfolio-header h2.section-heading {
+  max-width: 400px;
+}
+
+.portfolio-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+}
+
+.portfolio-items .portfolio-item a .portfolio-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.portfolio-items .portfolio-item a .portfolio-tags div {
+  font-size: 1.125rem;
+  background-color: var(--border-color);
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: 300;
+}
+
+.portfolio-items .portfolio-item a video {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.portfolio-items .portfolio-item a .portfolio-content-wrapper {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.portfolio-items .portfolio-item a .portfolio-content-wrapper h3 {
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+
+.portfolio-items .portfolio-item a .portfolio-content-wrapper p {
+  font-weight: 300;
+}
+
+.portfolio-items .portfolio-item a {
+  position: relative;
+}
+
+.portfolio-items .portfolio-item a::after {
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.portfolio-items .portfolio-item a:hover::after {
+  opacity: 1;
+  background: radial-gradient(
+    circle,
+    rgba(31, 128, 83, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.portfolio-items .portfolio-item::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 128, 83, 0) 0%,
+    rgba(28, 28, 28, 1) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
