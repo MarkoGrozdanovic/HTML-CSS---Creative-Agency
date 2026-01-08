@@ -64,6 +64,10 @@ header {
   transition: 0.3s;
 }
 
+.main-navigation img {
+  filter: drop-shadow(0 0 10px var(--black-color));
+}
+
 .main-navigation nav a:hover {
   color: var(--green-color);
 }
@@ -74,6 +78,7 @@ header {
   border-radius: 30px;
   transition: 0.3s;
   position: relative;
+  background-color: var(--black-color);
 }
 
 .secondary-cta-button:hover {
@@ -354,4 +359,124 @@ h2.section-heading {
     rgba(28, 28, 28, 1) 50%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+.call-to-action {
+  padding: 100px 0;
+}
+
+.call-to-action p {
+  font-weight: 300;
+  font-size: 3.125rem;
+  margin-bottom: 50px;
+}
+
+.call-to-action p span {
+  animation: word-fade 2s both linear;
+  animation-timeline: view();
+  animation-range: entry 30% cover 60%;
+  animation-delay: calc(var(--i) * 100ms);
+}
+
+.services {
+  padding: 80px 0;
+}
+
+.services .services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--border-color);
+  gap: 1px;
+  border: 1px solid var(--border-color);
+  margin-top: 60px;
+}
+.service-item {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  background-color: var(--black-color);
+}
+
+.service-item h3 {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.service-item p {
+  font-weight: 300;
+  max-width: 450px;
+}
+
+.service-item.span-2 {
+  grid-column: span 2;
+}
+
+.service-item a::before {
+  content: "";
+  display: block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid var(--white-color);
+  left: 15px;
+  top: 15px;
+  position: absolute;
+  z-index: 3;
+  transition: 0.3s;
+}
+
+.service-item a:hover::before {
+  background-color: var(--white-color);
+}
+
+.service-item video {
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.service-item a:hover video {
+  opacity: 1;
+}
+
+.service-item .service-item-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 30px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  transform: translateY(45%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.service-item a:hover .service-item-content {
+  transform: translateY(0);
+}
+
+.service-item .service-item-content .service-item-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.service-item .service-item-content .service-item-content-header img {
+  width: 30px;
+  height: 30px;
+  transform: rotate(-45deg);
 }
