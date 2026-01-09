@@ -44,6 +44,23 @@ header {
   animation: slide-down 1s;
 }
 
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 7px 0;
+  background-color: var(--white-color);
+}
+
 .main-navigation {
   display: flex;
   justify-content: space-between;
@@ -736,4 +753,77 @@ footer .footer-copyright .footer-copyright-wrapper {
   padding: 40px;
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 1366px) {
+  .hero .hero-content h1 {
+    font-size: 7rem;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .blog-items .blog-item .blog-content .author-wrapper {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    padding: 20px 0;
+    background-color: var(--black-color);
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-toggle .bar {
+    transition: 0.3s;
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar:first-child {
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    transform: translate(0px, -9px) rotate(-45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] .bar:last-child {
+    display: none;
+  }
+
+  .main-navigation {
+    position: relative;
+  }
+
+  .main-navigation nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: block;
+    max-height: 0;
+    overflow: clip;
+    transition: max-height 250ms ease;
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .main-navigation nav.is-open {
+    max-height: 60vh;
+    padding: 20px 0;
+  }
+
+  .main-navigation nav a:not(.secondary-cta-button) {
+    display: block;
+    padding: 10px 0;
+  }
 }
